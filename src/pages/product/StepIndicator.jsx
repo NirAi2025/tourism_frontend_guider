@@ -16,8 +16,6 @@ const StepIndicator = ({ currentStep, onStepClick, completedSteps }) => {
          { number: 10, label: "Safety" },  
     { number: 11, label: "Media" },
         { number: 12, label: "Policies" },
-    { number: 13, label: "Customer" },
-    { number: 14, label: "SEO" },
   ];
 
   return (
@@ -64,7 +62,7 @@ const StepIndicator = ({ currentStep, onStepClick, completedSteps }) => {
                   : step.number
               }
             </button>
-            <label>{step.label}</label>
+            {/* <label>{step.label}</label> */}
             </li>
           );
         })}
