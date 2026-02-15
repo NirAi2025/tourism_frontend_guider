@@ -24,8 +24,11 @@ const handleKeyDown = (e) => {
 
  const handlemultilang = (lang) => {
       onChange("accessibilityOptions",lang);
-  
   };
+ const handlemultilang1 = (lang) => {
+      onChange("notSuitableFor",lang);
+  };
+
 
   const accessibilityOptions = [
     { value: 'wheelchair', label: 'Wheelchair Accessible' },
@@ -144,7 +147,7 @@ const handleKeyDown = (e) => {
                   }
                     options={suitabilityOptions}
                     value={data.notSuitableFor ?? ""}
-                    onChange={(value) =>handlemultilang(value)}
+                    onChange={(value) =>handlemultilang1(value)}
                   />
                  
                 </div>

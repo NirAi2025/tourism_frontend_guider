@@ -7,6 +7,7 @@ import { Col, InputGroup, Row } from 'react-bootstrap';
 import Select from 'react-dropdown-select';
 import { Autocomplete, useJsApiLoader } from "@react-google-maps/api";
 import DatePicker from 'react-datepicker';
+import moment from 'moment';
 const libraries = ["places"];
 
 
@@ -309,6 +310,26 @@ const selectedTagValues =
     value: tag.tour_tag.name,
     label: tag.tour_tag.name
   })) || [];
+
+  const selectedLanguageValues =
+  data.tour_languages?.map(lang => ({
+    value: lang?.language?.id,
+    label: lang?.language?.name
+  })) || [];
+
+
+  const selectedAccessibilityValues =
+   data?.accessibility_options?.split(',')?.map(access => ({
+    value: access,
+    label: access
+  })) || [];
+
+    const selectednotsuitableValues =
+   data?.not_suitable_for?.split(',')?.map(access => ({
+    value: access,
+    label: access
+  })) || [];
+
 
    const onPlaceChanged = () => {
     const place = autocompleteRef.current.getPlace();
@@ -840,43 +861,18 @@ const selectedTagValues =
                         </Col>
 
                             <Col lg={12} md={12}>
-                            {data?.tour_operating_days?.map((slot, index) => (
+                            {data?.tour_availabilities?.map((slot, index) => (
                                 <Row key={index} className="align-items-center">
                                     <Col lg={4} md={4}>
                                         <div className='form-group'>
                                             <label>Start Time <span className='atrisk'>*</span></label>
-                                            <DatePicker 
-                                              showTimeSelect  
-                                              showTimeSelectOnly
-                                              timeIntervals={10}
-                                              timeCaption="Time"
-                                              dateFormat="h:mm aa"
-                                              selected={slot.start_time ? new Date(slot.start_time) : null} 
-                                             
-                                              className={
-                                                errors.operatingTimeSlots 
-                                                  ? "border-line form-control"
-                                                  : "form-control"
-                                               }  
-                                              placeholderText="Select a time"
-                                            />
+                                           <span>{slot.start_time}</span>
                                         </div>
                                     </Col>
                                     <Col lg={4} md={4}>
                                         <div className='form-group'>  
                                         <label>Operating Days   <span className='atrisk'>*</span></label>
-                                        <select className='form-control'
-                                        value={slot.day_of_week}
-                                      
-                                        >
-                                          <option value="1">Monday</option>
-                                          <option value="2">Tuesday</option>
-                                          <option value="3">Wednesday</option>
-                                          <option value="4">Thursday</option>
-                                          <option value="5">Friday</option>
-                                          <option value="6">Saturday</option>
-                                          <option value="7">Sunday</option>
-                                        </select>
+                                        <span>{moment(slot.available_date).format('DD-MM-YYYY')}</span>
                                     
                                         </div>  
                                     </Col>  
@@ -1173,7 +1169,7 @@ const selectedTagValues =
                 <div className='form-group'>
                   <label>Accessibility Options </label>
                   <Select
-                  values={[]}
+                  
                   multi
                   className={
                     errors.accessibilityOptions
@@ -1181,7 +1177,7 @@ const selectedTagValues =
                       : "form-control"
                   }
                     options={accessibilityOptions}
-                    value={data.accessibilityOptions ?? ""}
+                    values={selectedAccessibilityValues}
                 
                   />
                  
@@ -1191,7 +1187,7 @@ const selectedTagValues =
                 <div className='form-group'>
                   <label>Not Suitable For </label>
                   <Select
-                  values={[]}
+                  
                   multi
                   className={
                     errors.notSuitableFor
@@ -1199,7 +1195,7 @@ const selectedTagValues =
                       : "form-control"
                   }
                     options={suitabilityOptions}
-                    value={data.notSuitableFor ?? ""}
+                    values={selectednotsuitableValues}
                   
                   />
                  
@@ -1261,8 +1257,7 @@ const selectedTagValues =
             <label>
               Tour Language(s) <span className="atrisk">*</span>
             </label>
-            <Select
-              values={[]}
+            <Select             
               multi
               className={
                 errors.tourLanguage
@@ -1270,7 +1265,8 @@ const selectedTagValues =
                   : "form-control"
               }
               options={languageList}
-              value={data.tourLanguage ?? ""}
+              values={selectedLanguageValues}
+           
        
             />
             {errors.tourLanguage && (
@@ -1385,7 +1381,7 @@ const selectedTagValues =
                           <label>Cover Image  <span className='atrisk'>*</span></label>
                           
                           {data?.tour_medias && (
-                            <img src={data.tour_medias?.cover} alt="Cover Preview" style={{ marginTop: '10px', maxWidth: '100%', height: 'auto' }} />
+                            <img src={data.tour_medias?.cover} alt="Cover Preview" style={{ marginTop: '10px', maxWidth: '150px', height: 'auto' }} />
                           )}
                         </div>
                     </Col>
@@ -1407,7 +1403,7 @@ const selectedTagValues =
                         <div className='form-group'>
                         <label>Video URL </label>
                         <input 
-                            value={data.videoURL ?? ""}
+                            value={data?.tour_medias?.video ?? ""}
                      
                         type='text' className='form-control' placeholder='YouTube / Vimeo' />
                         

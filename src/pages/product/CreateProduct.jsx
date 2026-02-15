@@ -624,6 +624,21 @@ const { isLoaded } = useJsApiLoader({
   const SubmitSevenRegister = async () => {
     setIsSubmitting(true)
 
+   let Arr = []
+
+    profileformData.accessibilityOptions?.forEach((item) => {
+      Arr.push(item.value)
+    }
+    )
+
+    let Arr2 = []
+
+    profileformData.notSuitableFor?.forEach((item) => {
+      Arr2.push(item.value)
+    }
+    )
+
+
   let payload = {
   "tour_id": tourResponse?.tour_id || returnResult?.tour_id,
   "included": profileformData.whatsInclude,
@@ -633,9 +648,10 @@ const { isLoaded } = useJsApiLoader({
   "difficulty_level": profileformData.physicalLevel,
   "minage_restriction": profileformData.minageRestriction,
   "maxage_restriction": profileformData.maxageRestriction,
-  "accessibility_options": profileformData.accessibilityOptions,
-  "not_suitable_for": profileformData.notSuitableFor,
+  "accessibility_options": Arr,
+  "not_suitable_for": Arr2,
 }
+
 
   try {
     const res = await createTourStepSeven(payload);
@@ -658,15 +674,21 @@ const { isLoaded } = useJsApiLoader({
   const SubmitEightRegister = async () => {
     setIsSubmitting(true)
 
+   var arr = []
+   profileformData.tourLanguage?.forEach((item) => {
+    arr.push(item.value)
+   })
+
   let payload = {
   "tour_id": tourResponse?.tour_id || returnResult?.tour_id,
-  "language_ids": GetId(profileformData.tourLanguage),
+  "language_ids": arr,
   "is_live_guide": profileformData.liveGuide,
   "safety_instructions": profileformData.safetyInstructions,
   "fitness_requirements": profileformData.fitnessLevel,
   "permit_declared": profileformData.permitDecleartion,
   "insurance_declared": profileformData.insuranceDecleartion,
 }
+
 
   try {
     const res = await createTourStepEight(payload);
@@ -689,10 +711,11 @@ const { isLoaded } = useJsApiLoader({
 
 
     setIsSubmitting(true)
+
    const formData = new FormData();
       formData.append("tour_id", tourResponse?.tour_id || returnResult?.tour_id);
       formData.append("cover_image", profileformData.coverImage);
-      {profileformData.galleryImages?.FileList?.forEach((file, index) => {
+      {profileformData.galleryImages?.forEach((file, index) => {
         formData.append(`gallery_images`, file);
       } )}
 

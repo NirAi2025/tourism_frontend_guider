@@ -22,15 +22,14 @@ const coverImageHandle = (file) => {
   }
 }
 
-  const GaleryImageHandle = (file) => {    
-    if (file.length > 0) {
-      for (let i = 0; i < file.length; i++) {
-        if (file[i].size > 50 * 1024 * 1024) {  
-            return;
-        }
-      }
-    }   
-    onChange("galleryImages", file);
+  const GaleryImageHandle = (file) => {   
+    
+    let arr = []
+     for (let i = 0; i < file.length; i++) {
+      arr.push(file[i])
+     }
+      
+    onChange("galleryImages", arr);
     const previews = [];    
     for (let i = 0; i < file.length; i++) {
       const reader = new FileReader();  
