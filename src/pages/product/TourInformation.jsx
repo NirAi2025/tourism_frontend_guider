@@ -2,7 +2,7 @@ import React from 'react'
 import { Col, Row } from 'react-bootstrap';
 import Select from 'react-dropdown-select';
 
-const TourInformation = ({ data, onChange, errors, countryList, languageList, stateList, cityList, loadingStates, phoneCodeList }) => {
+const TourInformation = ({ data, onChange, errors, countryList, languageList, stateList, cityList, loadingStates, phoneCodeList, tourCategoriesList }) => {
 
 
   const handlemultilang = (lang) => {
@@ -10,11 +10,7 @@ const TourInformation = ({ data, onChange, errors, countryList, languageList, st
   
   };
 
-  var categoryOptions = [
-    { value: 'Walking', label: 'Walking' },
-    { value: 'culture', label: 'culture' },
-    { value: 'adventure', label: 'adventure' },
-  ]
+ 
   var tagOptions = [
     { value: 'history', label: 'History' },
     { value: 'food', label: 'Food' },
@@ -67,7 +63,7 @@ const TourInformation = ({ data, onChange, errors, countryList, languageList, st
                       ? "border-line form-control"
                       : "form-control"
                   }
-                    options={categoryOptions}
+                    options={tourCategoriesList}
                       labelField="label"
                     valueField="value"
                      searchable={true}
@@ -168,20 +164,16 @@ const TourInformation = ({ data, onChange, errors, countryList, languageList, st
              <Col lg={4} md={6}>
                 <div className='form-group'>
                   <label>Landmark/Place <span className='atrisk'>*</span></label>
-                  <Select
-                   className={
-                    errors.landmark
-                      ? "border-line form-control"
-                      : "form-control"
-                  }
-                    options={cityList}
-                      labelField="label"
-                    valueField="value"
-                    value={data.landmark ?? ""}
-                    onChange={(value) => onChange("landmark", value)}
-                     disabled={loadingStates || !cityList.length}
-                     placeholder={loadingStates ? "Loading city..." : "Select City"}
-                  />
+                    <input 
+                              value={data.landmark ?? ""}
+                             onChange={(e) => onChange("landmark", e.target.value)}
+                             className={
+                                errors.landmark
+                                  ? "border-line form-control"
+                                  : "form-control"
+                              }
+                              type='text'  placeholder='Place' />
+                 
                  
                    {errors.landmark && (
                   <p className="text-sm text-destructive">{errors.landmark}</p>

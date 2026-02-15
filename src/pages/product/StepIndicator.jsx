@@ -11,11 +11,9 @@ const StepIndicator = ({ currentStep, onStepClick, completedSteps }) => {
     { number: 5, label: "Duration" },
     { number: 6, label: "Pricing" },
     { number: 7, label: "Inclusions" },
-      { number: 8, label: "Access" },
-        { number: 9, label: "Languages" },
-         { number: 10, label: "Safety" },  
-    { number: 11, label: "Media" },
-        { number: 12, label: "Policies" },
+        { number: 8, label: "Languages" },
+         { number: 9, label: "Media" },  
+    { number: 10, label: "Policies" },
   ];
 
   return (

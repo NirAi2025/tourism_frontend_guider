@@ -1,10 +1,11 @@
+
 import React from 'react'
 import { Col, Row } from 'react-bootstrap';
 
 const Itinery = ({data, onChange, errors}) => {
 
     const [interestInput, setInterestInput] = React.useState([
-        {name: '', description: ''}
+        {name: '', description: '', approx_duration: ''},
     ]);
 
     const InputHandler = (e, index, field) => {
@@ -15,7 +16,7 @@ const Itinery = ({data, onChange, errors}) => {
     }
 
     const AddHandle = () => {
-        setInterestInput([...interestInput, {name: '', description: ''}]);
+        setInterestInput([...interestInput, {name: '', description: '', approx_duration: ''}]);
     }
 
     const handleKeyDown = (e) => {
@@ -59,7 +60,7 @@ const Itinery = ({data, onChange, errors}) => {
                         
                                 {interestInput && interestInput.map((item, index) => (
                                          <Row key={index}>
-                                    <Col lg={5} md={5} >
+                                    <Col lg={3} md={3} >
                                         <div className='point-interest-box'>
                                             <div className='form-group'>    
                                                 <label>Name</label>
@@ -74,7 +75,7 @@ const Itinery = ({data, onChange, errors}) => {
                                            
                                         </div>  
                                     </Col>
-                                     <Col lg={5} md={5}>
+                                     <Col lg={4} md={4}>
                                         <div className='point-interest-box'>
                                            
                                             <div className='form-group'>    
@@ -88,6 +89,18 @@ const Itinery = ({data, onChange, errors}) => {
                                             </div>
                                          
                                         </div>  
+                                    </Col>
+                                    <Col lg={2} md={2}>
+                                         <div className='form-group'>    
+                                                <label>Duration</label>  
+                                                <input 
+                                                type='text' 
+                                                value={item.approx_duration}    
+                                                onChange={(e)=>InputHandler(e, index,'approx_duration')}
+                                                onKeyDown={handleKeyDown}
+                                                className='form-control' 
+                                                placeholder='Duration in minutes' />  
+                                            </div>
                                     </Col>
                                      <Col lg={2} md={2} >
                                         <div className='point-interest-box'>
@@ -120,19 +133,7 @@ const Itinery = ({data, onChange, errors}) => {
                             
                             </div>
                         </Col>
-                         <Col lg={12} md={12}>
-                            <div className='form-group'>
-                              <label>Approx. Duration per Stop </label>
-                              <input
-                              type='text' 
-                              value={data.duration ?? ""}
-                             onChange={(e) => onChange("duration", e.target.value)}
-                                 onKeyDown={handleKeyDown}
-                             className="form-control"
-                                placeholder='Timing info' />
-                            
-                            </div>
-                        </Col>
+                       
                     </Row>
     </div>
   )

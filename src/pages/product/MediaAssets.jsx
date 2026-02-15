@@ -47,7 +47,7 @@ const coverImageHandle = (file) => {
 
   return (
         <div className="register-profile">
-             <h3>10. Media & Assets  </h3>
+             <h3>9. Media & Assets  </h3>
 
              <Row>
                     <Col lg={6} md={6}>
@@ -66,6 +66,7 @@ const coverImageHandle = (file) => {
                                 </div>
                             }
                             />
+                           
                      
                           {coverImagePreview && (
                             <img src={coverImagePreview} alt="Cover Preview" style={{ marginTop: '10px', maxWidth: '100%', height: 'auto' }} />
@@ -89,7 +90,9 @@ const coverImageHandle = (file) => {
                                 </div>
                             }
                             />
-                        
+                            {errors.galleryImages && (
+                              <p className="text-sm text-destructive">{errors.galleryImages}</p>
+                            )}
                           {galleryImagePreviews.length > 0 && ( 
                             <div style={{ marginTop: '10px', display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
                               {galleryImagePreviews.map((src, index) => (
@@ -103,8 +106,8 @@ const coverImageHandle = (file) => {
                         <div className='form-group'>
                         <label>Video URL </label>
                         <input 
-                            value={data.videoURL ?? ""}
-                        onChange={(e) => onChange("videoURL", e.target.value)}
+                            value={data.videoUrl ?? ""}
+                        onChange={(e) => onChange("videoUrl", e.target.value)}
 
                         type='text' className='form-control' placeholder='YouTube / Vimeo' />
                         
@@ -115,11 +118,11 @@ const coverImageHandle = (file) => {
             <label>
             Image Rights Confirmation <span className="atrisk">*</span>
             </label>
-            <input type="checkbox" checked={data.imageRightsConfirmation} onChange={(e) => onChange("imageRightsConfirmation", e.target.checked)} />
+            <input type="checkbox" checked={data.imageConfirmation} onChange={(e) => onChange("imageConfirmation", e.target.checked)} />
            
-            {errors.imageRightsConfirmation && (
-              <p className="text-sm text-destructive">
-                {errors.imageRightsConfirmation}
+            {errors.imageConfirmation && (
+              <p className="text-sm text-destructive" style={{position:'relative'}}>
+                {errors.imageConfirmation}
               </p>
             )}
           </div>

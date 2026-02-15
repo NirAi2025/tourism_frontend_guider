@@ -9,7 +9,7 @@ const LanguageSafety = ({ data, onChange, errors, languageList }) => {
 
   return (
     <div className="register-profile">
-      <h3>9. Language and Safety </h3>
+      <h3>8. Language and Safety </h3>
       <Row>
         <Col lg={4} md={6}>
           <div className="form-group">
@@ -104,27 +104,29 @@ const LanguageSafety = ({ data, onChange, errors, languageList }) => {
              Permit Declaration
             </label>
             <input type="checkbox" checked={data.permitDecleartion} onChange={(e) => onChange("permitDecleartion", e.target.checked)} />
-           
+      
             {errors.permitDecleartion && (
-              <p className="text-sm text-destructive">
+              <p className="text-sm text-destructive" style={{position:'relative'}}>
                 {errors.permitDecleartion}
               </p>
             )}
           </div>
+          
         </Col>
         <Col lg={12} md={12}>
           <div className="form-group d-flex align-items-center gap-2">
             <label>
             Insurance Declaration
             </label>
-            <input type="checkbox" checked={data.insuranceDeclaration} onChange={(e) => onChange("insuranceDeclaration", e.target.checked)} />
+            <input type="checkbox" checked={data.insuranceDecleartion} onChange={(e) => onChange("insuranceDecleartion", e.target.checked)} />
            
-            {errors.insuranceDeclaration && (
-              <p className="text-sm text-destructive">
-                {errors.insuranceDeclaration}
+          {errors.insuranceDecleartion && (
+              <p className="text-sm text-destructive" style={{position:'relative'}}>
+                {errors.insuranceDecleartion}
               </p>
             )}
           </div>
+            
         </Col>
       </Row>
     </div>

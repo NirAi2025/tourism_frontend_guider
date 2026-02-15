@@ -30,6 +30,12 @@ export const language = () => {
   return api.get("languages");
 };
 
+export const tourCategories = () => {
+  return api.get("tour-categories");
+};
+
+
+
 
 export const StepOneRegister = (payload) => {
   return api.post("guide/register", payload, {

@@ -1,7 +1,40 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { Col, Row } from 'react-bootstrap'
-
+import { Autocomplete } from "@react-google-maps/api";
 const Mettings = ({data, onChange, errors}) => {
+
+const autocompleteRef = useRef(null);
+
+ const onLoad = (autocomplete) => {
+    autocompleteRef.current = autocomplete;
+  };
+
+  const onPlaceChanged = () => {
+    const place = autocompleteRef.current.getPlace();
+    console.log("Selected address:", place);
+    getLatlong(place.formatted_address);
+
+    onChange("mettingAddress", place.formatted_address);
+  };
+
+  const getLatlong = (address) => {
+    const geocoder = new window.google.maps.Geocoder();
+    geocoder.geocode({ address: address }, (results, status) => {
+      if (status === "OK" && results[0]) {
+        const location = results[0].geometry.location;
+        const latitude = location.lat();
+        const longitude = location.lng();
+        console.log("Latitude:", latitude);
+        console.log("Longitude:", longitude);
+        onChange("latitude", latitude);
+        onChange("longitude", longitude);
+      } else {
+        console.error("Geocode was not successful for the following reason: " + status);
+      }
+    });
+  };
+
+
   return (
      <div className='register-profile'>
         <h3>4. Meeting & Logistics  </h3>
@@ -23,37 +56,26 @@ const Mettings = ({data, onChange, errors}) => {
                             )}
                             </div>
                         </Col>
+                      
                         <Col lg={4} md={6}>
                             <div className='form-group'>
                               <label>Meeting Point Address  <span className='atrisk'>*</span></label>
-                              <input 
-                              value={data.mettingAddress ?? ""}
-                             onChange={(e) => onChange("mettingAddress", e.target.value)}
-                             className={
-                                errors.mettingAddress
-                                  ? "border-line form-control"
-                                  : "form-control"
-                              }
-                              type='text'  placeholder='Full address' />
+                               
+                                    <Autocomplete onLoad={onLoad} onPlaceChanged={onPlaceChanged}>
+                                      <input
+                                        type="text"
+                                        placeholder="Enter address"
+                                        className={
+                                          errors.mettingAddress
+                                                  ? "border-line form-control"
+                                                  : "form-control"
+                                              }
+                                      />
+                                    </Autocomplete>
+                              
+                            
                               {errors.mettingAddress && (
                               <p className="text-sm text-destructive">{errors.mettingAddress}</p>
-                            )}
-                            </div>
-                        </Col>
-                        <Col lg={4} md={6}>
-                            <div className='form-group'>
-                              <label>Google Maps Link  <span className='atrisk'>*</span></label>
-                              <input 
-                              value={data.mapsLink ?? ""}
-                             onChange={(e) => onChange("mapsLink", e.target.value)}
-                             className={
-                                errors.mapsLink
-                                  ? "border-line form-control"
-                                  : "form-control"
-                              }
-                              type='url'  placeholder='Exact pin' />
-                              {errors.mapsLink && (
-                              <p className="text-sm text-destructive">{errors.mapsLink}</p>
                             )}
                             </div>
                         </Col>

@@ -621,8 +621,6 @@ useEffect(()=>{
    setCurrentStep((prev) => Math.min(Stepcount + 1, 7));
   }
 
-
-
 },[user])
 
 
