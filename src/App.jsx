@@ -7,6 +7,7 @@ import DefaultLayout from './layouts/DefaultLayout'
 import CreateProduct from './pages/product/CreateProduct'
 import ProductList from './pages/product/ProductList'
 import ViewProduct from './pages/product/ViewProduct'
+import MyProfile from './pages/profile/MyProfile'
 const Home = React.lazy(() => import('./pages/home'))
 const Register = React.lazy(() => import('./pages/register/Register'))
 const Dashboard = React.lazy(() => import('./pages/profile/Dashboard'))
@@ -29,6 +30,7 @@ function App() {
                      <Route path="/product" name="Product" element={<ProductList />} />
                   <Route path="/product/create" name="Create Product" element={<CreateProduct />} />
                   <Route path="/product/:id" name="View Product" element={<ViewProduct />} />
+                    <Route path="/profile" name="My Profile" element={<MyProfile />} />
           </Route>
         </Route>
          <Route element={<DefaultLayout />}>                

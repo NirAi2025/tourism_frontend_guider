@@ -16,9 +16,13 @@ const AppHeader = () => {
  const [showpassword, setshowpassword] = useState(false);
 const [errors, setErrors] = useState({});
 const [loading, setLoading] = useState(false)
+//  const [authdata, setAuthdata] = useState({
+//      email:"shiba@gmail.com",
+//      password:"Shiba@123"
+//  })
  const [authdata, setAuthdata] = useState({
-     email:"shiba@gmail.com",
-     password:"Shiba@123"
+     email:"",
+     password:""
  })
  const [profiledata, setProfiledata] = useState(null);
  const [isloading, setIsloading] = useState(false);
@@ -121,6 +125,12 @@ const [loading, setLoading] = useState(false)
 
    }, []);
 
+   const LogoutHandle = () => {
+    localStorage.removeItem("token");
+    dispatch(setAuth({ token: null, user: null }));
+    navigate("/")
+   }
+
 
 
   return (
@@ -151,7 +161,7 @@ const [loading, setLoading] = useState(false)
                                     <Dropdown.Menu>
                                       <Dropdown.Item as={NavLink} to="/dashboard">Dashboard</Dropdown.Item>
                                       <Dropdown.Item as={NavLink} to="/profile">Profile</Dropdown.Item> 
-                                      <Dropdown.Item as={NavLink} to="/logout">Logout</Dropdown.Item> 
+                                      <Dropdown.Item as={NavLink} to="#" onClick={()=>LogoutHandle()}>Logout</Dropdown.Item> 
                                     </Dropdown.Menu>
                                   </Dropdown>
                                 </li>

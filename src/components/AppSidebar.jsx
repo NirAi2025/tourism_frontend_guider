@@ -21,13 +21,13 @@ const AppSidebar = () => {
             <li><NavLink to="/dashboard"><span><MdOutlineDashboard /></span>Dashboard</NavLink></li>
             <li><NavLink to="/product"><span><IoBookmarksOutline /></span>All Products</NavLink></li>
             <li><NavLink to="/bookings"><span><MdOutlineDateRange /></span>bookings</NavLink></li>
-            <li><NavLink to="/bookings"><span><CgProfile /></span>My Profile</NavLink></li>
+            <li><NavLink to="/profile"><span><CgProfile /></span>My Profile</NavLink></li>
             <li><NavLink to="/bookings"><span><FaRegMessage /></span>Messages</NavLink></li>
             <li><NavLink to="/bookings"><span><VscGraph /></span>Analytics</NavLink></li>
             <li><NavLink to="/bookings"><span><FaRegStar /></span>Ratings</NavLink></li>
             <li><NavLink to="/bookings"><span><AiOutlineDollar /></span>Finance</NavLink></li>
             <li><NavLink to="/bookings"><span><IoSettingsOutline /></span>Settings</NavLink></li>
-            <li><NavLink to="/bookings"><span><TbLogout /></span>Log Out</NavLink></li>
+            <li><NavLink to="/dashboard"><span><TbLogout /></span>Log Out</NavLink></li>
         </ul>
     </div>
   )

@@ -4,6 +4,8 @@ import { getProfile } from '../../api/userService';
 import { Container, Nav } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom';
 import { IoIosStar } from 'react-icons/io';
+import { IoWallet } from 'react-icons/io5';
+import { MdOutlineKeyboardArrowRight } from 'react-icons/md';
 
 const Dashboard = () => {
 
@@ -27,6 +29,60 @@ const getProfiledata = async () => {
   return (
     <div className='comon-lauout'>
       <h5>Dashboard</h5>
+      <div className='pauout'>
+          <div className='d-flex gap-3 wallet-info'>
+            <div className='walet-icon'>
+              <IoWallet />
+            </div>
+            <div>
+              <h5>Expected payout</h5>
+              <h6>Expected by 10/2/2026 </h6>
+            </div>
+          </div>
+          <div className='d-flex gap-3 justify-content-between align-items-center'>
+            <strong>$ 28,891.138</strong>
+            <MdOutlineKeyboardArrowRight />
+            </div>
+      </div>
+       <div className='split-card'>
+        <div className='split-card-header'>
+          <h5>Transaction</h5>
+        </div>
+        <div className='split-card-body'> 
+            <div className='table-responsive'>
+            <table className='table custom-table'>
+              <thead>
+                <tr>  
+                  <th>ID</th>
+                  <th>Date</th>
+                  <th>Total</th>
+                  <th>Method</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>#5089</td>
+                    <td>2024-06-15</td> 
+                    <td>$ 28,891.138</td>
+                    <td>Credit Card</td>
+                    <td><span className='text-success'>Completed</span></td>                   
+                    <td><button className='btn btn-sm btn-outline-primary'>View Details</button></td>
+                  </tr> 
+                   <tr>
+                    <td>#5089</td>
+                    <td>2024-06-15</td> 
+                    <td>$ 28,891.138</td>
+                    <td>Credit Card</td>
+                    <td><span className='text-danger'>Pending</span></td>                   
+                    <td><button className='btn btn-sm btn-outline-primary'>View Details</button></td>
+                  </tr> 
+                  </tbody>
+                  </table>
+          </div>
+        </div>
+      </div>
       <div className='split-card'>
         <div className='split-card-header'>
           <h5>Recent bookings</h5>

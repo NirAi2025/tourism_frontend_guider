@@ -729,3 +729,29 @@ table.table.custom-table td {
     padding: 5px 10px;
     display: inline-block;
 }
+.pauout {
+    background: #745AEF;
+    color: #fff;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    padding: 15px;
+}
+.walet-icon {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    border-radius: 50%;
+}
+.wallet-info h6 {
+    margin: 0;
+    font-size: 12px;
+}
+.wallet-info {
+    border-bottom: 1px solid #a89bff;
+    padding: 0 0 14px 0;
+    margin: 0 0 14px 0;
+}

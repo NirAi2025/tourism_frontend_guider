@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import { Dropdown } from 'react-bootstrap'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { getProfile } from '../api/userService';
 import Loader from './Loader';
 import { VscBellDot } from 'react-icons/vsc';
+import { setAuth } from '../redux/ReducerDataHandle';
+import { useDispatch } from 'react-redux';
 
 const AuthHeader = () => {
      const [profiledata, setProfiledata] = useState(null);
  const [isloading, setIsloading] = useState(false);
 
+ let dispatch = useDispatch()
+ let navigate = useNavigate()
 
    const getProfiledata = async () => {
     setIsloading(true);
@@ -27,7 +31,11 @@ const AuthHeader = () => {
    useEffect(() => {
    getProfiledata();
    }, []);
-
+   const LogoutHandle = () => {
+    localStorage.removeItem("token");
+    dispatch(setAuth({ token: null, user: null }));
+    navigate("/")
+   }
 
 
 
@@ -53,7 +61,7 @@ const AuthHeader = () => {
                                     <Dropdown.Menu>
                                       <Dropdown.Item as={NavLink} to="/dashboard">Dashboard</Dropdown.Item>
                                       <Dropdown.Item as={NavLink} to="/profile">Profile</Dropdown.Item> 
-                                      <Dropdown.Item as={NavLink} to="/logout">Logout</Dropdown.Item> 
+                                      <Dropdown.Item  to="#" onClick={()=>LogoutHandle()}>Logout</Dropdown.Item> 
                                     </Dropdown.Menu>
                                   </Dropdown>
                                 </li>
