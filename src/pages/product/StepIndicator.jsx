@@ -21,15 +21,25 @@ const StepIndicator = ({ currentStep, onStepClick, completedSteps }) => {
             <div className="step-information">
                 <span>Step {currentStep} of 14</span>
                 <label>{
-                currentStep == 1 ? 'Profile'
+                currentStep == 1 ? 'Tour'
                  : 
-                 currentStep == 2 ? "Identitiy"
+                 currentStep == 2 ? "Description"
                  :
-                 currentStep == 3 ? "Tourism"
+                 currentStep == 3 ? "Itinerary"
                  :
-                currentStep == 4 ? "Insurance" 
+                currentStep == 4 ? "Meeting" 
                    :
-                currentStep == 5 ? "Contact" 
+                currentStep == 5 ? "Duration" 
+                  :
+                currentStep == 6 ? "Pricing"
+                  :
+                currentStep == 7 ? "Inclusions"
+                  :
+                currentStep == 8 ? "Languages"
+                  :
+                currentStep == 9 ? "Media"
+                  :
+                currentStep == 10 ? "Policies"
                   :
                   ""
                 }  

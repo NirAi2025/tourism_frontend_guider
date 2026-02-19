@@ -143,13 +143,13 @@ const [loading, setLoading] = useState(false)
             <Container>
                     <Row className='align-items-center'>
                         {/* logo */}
-                        <Col lg={2}>
+                        <Col lg={2} md={6} xs={4}>
                             <NavLink to="/">Your Guide</NavLink>
                         </Col>
                       
                        
                         {/* Header right */}
-                         <Col lg={10}>
+                         <Col lg={10} md={6} xs={8}>
                          {token ? (
                             <ul className='header-right'>
                      

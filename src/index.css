@@ -755,3 +755,80 @@ table.table.custom-table td {
     padding: 0 0 14px 0;
     margin: 0 0 14px 0;
 }
+button.menu-btn {
+    border: none;
+    background: transparent;
+    padding: 0;
+    font-size: 30px;
+    display: none;
+}
+button.close-btn {
+    padding: 0;
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    display: none;
+}
+@media screen and (max-width: 768px) {
+    .home-banner h1 {
+    font-size: 28px;
+  
+}
+.home-banner-right-image.right-image {
+    margin-top: 30px;
+}
+.tours-card h3 {
+    min-height: auto;
+}
+.inspire-travels h2 {
+    font-size: 24px;
+}
+.inspire-travels {
+    padding:40px 15px;
+}
+.home-banner .getstartedBttn {
+    margin-bottom: 15px;
+}
+ul.for-desktop {
+    display: none;
+}
+.step-information {
+    display: block;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    align-items: center;
+}
+.step-list {
+    padding: 21px 0;
+}
+.app-sidebar {
+    display: none;
+    transition: all 0.3s ease;
+}
+.auth-header {
+    padding: 10px 15px 10px 15px;
+}
+.auth-content {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 4.8%;
+    margin-right: 0;
+}
+button.menu-btn {
+    display: block;
+}
+
+.app-sidebar.show {
+     display: block;
+    transition: all 0.3s ease;
+}
+button.close-btn {
+   display: block;
+}
+.auth-logo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+}

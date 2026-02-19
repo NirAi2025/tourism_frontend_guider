@@ -4,12 +4,15 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import { getProfile } from '../api/userService';
 import Loader from './Loader';
 import { VscBellDot } from 'react-icons/vsc';
-import { setAuth } from '../redux/ReducerDataHandle';
-import { useDispatch } from 'react-redux';
+import { setAuth, sidebarAction } from '../redux/ReducerDataHandle';
+import { useDispatch, useSelector } from 'react-redux';
+import { MdMenuOpen } from 'react-icons/md';
 
 const AuthHeader = () => {
      const [profiledata, setProfiledata] = useState(null);
  const [isloading, setIsloading] = useState(false);
+
+ const {isSidebarshow} = useSelector((state) => state.ReducerDataHandle);
 
  let dispatch = useDispatch()
  let navigate = useNavigate()
@@ -44,6 +47,7 @@ const AuthHeader = () => {
         <>
          {isloading && <Loader />}
                    <div className='auth-header'>
+                    <button className='menu-btn' onClick={()=>dispatch(sidebarAction(!isSidebarshow))}><MdMenuOpen /></button>
                     <h4>{profiledata?.name}</h4>
                    <ul className='header-right'>
                                 <li>

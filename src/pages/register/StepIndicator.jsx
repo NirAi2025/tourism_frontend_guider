@@ -27,11 +27,14 @@ const StepIndicator = ({ currentStep, onStepClick, completedSteps }) => {
                  :
                 currentStep == 4 ? "Insurance" 
                    :
-                currentStep == 5 ? "Contact" 
+                currentStep == 5 ? "Languages" 
+                  :
+                currentStep == 6 ? "Banking"
+                  :
+                currentStep == 7 ? "Public"
                   :
                   ""
-                }  
-                
+                } 
                 </label>
             </div>
             <ul className="for-desktop">

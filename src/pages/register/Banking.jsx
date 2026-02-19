@@ -10,13 +10,21 @@ const Banking = ({ data, onChange, errors, currencyList,countryList }) => {
 
 const payout = [
   {
-    value: 'Bank transfer',
+    value: 'bank_transfer',
     label: 'Bank transfer'
   },
   {
-    value: 'PayPal',
+    value: 'paypal',
     label: 'PayPal'
-  }
+  },
+  {
+    value: 'stripe',
+    label: 'Stripe'
+  },
+   {
+    value: 'other',
+    label: 'Other'
+  },
 ];
 
 const handleKeyDown = (e) => {
